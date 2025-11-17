@@ -1,0 +1,386 @@
+Task 3: Create signup functionality
+You will now create the logic to build a signup component.
+
+Create a new component named signup.js:
+
+In the app folder, right-click and select New File.
+Name the file signup.js, as shown in the screenshot.
+
+
+Navigate inside the signup.js file and import important files at the start of the signup file based on the given instructions:
+
+react and useState for defining and managing state variables.
+react-native components such as SafeAreaView, View, and TextInput for structuring the UI.
+AsyncStorage from @react-native-async-storage/async-storage to store user data locally on the device.
+useRouter from expo-router for navigation between screens.
+COLORS, icons, and SHADOWS from constants to maintain consistency in styling.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+import React, { useState } from "react";
+import {
+  View,
+  SafeAreaView,
+  Image,
+  Alert,
+  TextInput,
+  Text,
+  TouchableOpacity
+} from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Stack, useRouter } from "expo-router";
+import { COLORS, icons, SHADOWS } from "../constants";
+
+Copied!
+
+Wrap Toggled!
+Next, create the basic layout of the signup function after importing the necessary statements.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+const SignUp = () => {
+    return (
+            <>
+            </>
+        )
+}
+export default SignUp;
+
+Copied!
+
+Wrap Toggled!
+Now, initialize the state and routing within the signup component before the return statement. This will set up the form fields and prepare routing for navigation actions:
+
+State Initialization with useState:
+
+userName, email, and password are state variables set to empty strings initially.
+setUserName, setEmail, and setPassword are functions that update these state values when needed. For example, they might update in response to user input in a form.
+Routing with useRouter:
+
+router = useRouter(); initializes the router object, which provides navigation methods. It’s typically used to programmatically redirect users, such as after form submission.
+1
+2
+3
+4
+const [userName, setUserName] = useState("");
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const router = useRouter();
+
+Copied!
+
+Wrap Toggled!
+Now within <> </> under the return statement, create a SafeAreaView component. This React Native component ensures that content is displayed within the safe, visible area of the screen, avoiding areas such as notches and status bars.
+
+1
+2
+3
+<SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+</SafeAreaView>
+
+Copied!
+
+Wrap Toggled!
+Create a code that defines configuration options for a React Navigation Stack.Screen component. It customizes the screen's header style by setting a backgroundColor of COLORS.lightWhite and removing the header's shadow. The headerLeft option is configured to render an empty fragment <></>, effectively removing the default back button, while headerTitle is set to an empty string, hiding the title.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+<Stack.Screen
+        options={{
+          headerStyle: { backgroundColor: COLORS.lightWhite },
+          headerShadowVisible: false,
+          headerLeft: () => (
+        <></>
+          ),
+          headerTitle: "",
+        }}
+      />
+
+Copied!
+
+Wrap Toggled!
+Now, create a View component after Stack.Screen with a padding of 20 units and assign it a testID of signupContainer to facilitate identification in tests.
+
+1
+2
+<View style={{ padding: 20 }} testID="signupContainer">
+</View>
+
+Copied!
+
+Wrap Toggled!
+Inside the View component with testID="signupContainer", create another View component with testID="imageIcon". This component should be styled with padding, centered horizontally, a light gray background, rounded corners, and a height of 90. Additionally, it should apply a medium shadow effect using SHADOWS.medium, with the shadow color set to white. Inside this View, an Image component will display an icon sourced from icons.menu, with a width and height of 50. The testID is used for testing purposes.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+<View
+          style={{
+            padding: 20,
+            marginLeft: "auto",
+            marginRight: "auto",
+            backgroundColor: "#f0f0f0",
+            borderRadius: 50,
+            height: 90,
+            ...SHADOWS.medium,
+            shadowColor: COLORS.white,
+          }}
+          testID="imageIcon"
+        >
+          <Image
+            source={icons.menu}
+            style={{
+              width: 50,
+              height: 50,
+            }}
+          />
+        </View>
+
+Copied!
+
+Wrap Toggled!
+After the View component with testID="imageIcon", create another View component with testID="formData" that has a top margin of 30. This component will contain text boxes for the username, email, and password.
+
+1
+2
+3
+<View style={{ marginTop: 30 }} testID="formData">
+</View>
+
+Copied!
+
+Wrap Toggled!
+Inside the View component with testID="formData", create another View with a bottom margin of 10 that wraps a TextInput field styled with a border, padding, and rounded corners. The TextInput captures the userName, updates it using setUserName, and displays a placeholder UserName.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+<View style={{ marginBottom: 10 }} testID="userName">
+            <TextInput
+              style={{
+                borderColor: "#ccc",
+                borderWidth: 1,
+                padding: 10,
+                borderRadius: 5,
+                marginBottom: 10,
+              }}
+              value={userName}
+              onChangeText={setUserName}
+              placeholder="UserName"
+            />
+</View>
+
+Copied!
+
+Wrap Toggled!
+After the View component with testID="userName", create two input fields wrapped in View components. The first TextInput captures the user's email, styled with a border, padding, and a bottom margin, and has a placeholder Email. The second TextInput captures the password, and is styled similarly, but with a larger bottom margin, using secureTextEntry to hide the password text.
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+  <View style={{ marginBottom: 10 }} testID="email">
+            <TextInput
+              style={{
+                borderColor: "#ccc",
+                borderWidth: 1,
+                padding: 10,
+                borderRadius: 5,
+                marginBottom: 10,
+              }}
+              value={email}
+              onChangeText={setEmail}
+              placeholder="Email"
+            />
+          </View>
+          <View style={{ marginBottom: 20 }} testID="password">
+            <TextInput
+              style={{
+                borderColor: "#ccc",
+                borderWidth: 1,
+                padding: 10,
+                borderRadius: 5,
+              }}
+              value={password}
+              onChangeText={setPassword}
+              secureTextEntry={true}
+              placeholder="Password"
+            />
+          </View>
+
+Copied!
+
+Wrap Toggled!
+Then, create a TouchableOpacity button after all View component with testID="password". The button should have a primary background color, padding, rounded corners, centered text, and a bottom margin. When pressed, it triggers the handleLogin function. The button displays a bold, white Sign Up label and is identified by a testID for testing purposes.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+ <TouchableOpacity
+            style={{
+              backgroundColor: COLORS.primary,
+              padding: 15,
+              borderRadius: 5,
+              alignItems: "center",
+              marginBottom: 10,
+            }}
+            onPress={handleRegister}
+            testID="handleRegister"
+          >
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>Sign Up</Text>
+          </TouchableOpacity>
+
+Copied!
+
+Wrap Toggled!
+After TouchableOpacity, create a View component with a horizontal layout, centered content, and a top margin of 5. Inside, add a Text element with a right margin that displays Already have an account?. Next to it, include a TouchableOpacity that navigates to the /login route when pressed, displaying a Login text styled in blue. The View is marked with a testID for testing purposes.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+  <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 5,
+            }}
+            testID="textData"
+          >
+            <Text style={{ marginRight: 5 }}>Already have an account?</Text>
+            <TouchableOpacity onPress={() => router.push("/login")}>
+              <Text style={{ color: "blue" }}>Login</Text>
+            </TouchableOpacity>
+          </View>
+
+Copied!
+
+Wrap Toggled!
+Now, create the handleLogin function, which first checks if userName, email, or password fields are empty. If any field is missing, it shows an alert with a Validation Error message. If all fields are filled, it creates a userDetails object, adds a sample token, and saves this object as a string in AsyncStorage. Finally, it logs the user details to the console and navigates to the /login route using router.push.
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+  const handleRegister = async () => {
+    if (!userName || !email || !password) {
+      Alert.alert("Validation Error", "Please fill in all fields.");
+      return;
+    }
+    const userDetails = { userName, email,password, token: "sample-token" };
+    await AsyncStorage.setItem("userDetails", JSON.stringify(userDetails));
+    console.log("User logged in:", userDetails);
+    router.push("/login");
+  };
+
+Copied!
+
+Wrap Toggled!
+Note: Include the above code before the return statement
