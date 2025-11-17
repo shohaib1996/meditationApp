@@ -1,293 +1,219 @@
-Task 4: Create login functionality
-Next, create one more component named login.js inside the app folder.
+1.
+Question 1
+Which of the following serves as the entry point of the application?
 
-Within the login.js component, create logic that displays a form for user login:
 
-Use useState hooks to manage email and password input values and provides a SafeAreaView with a header styled to blend with a light background.
 
-Inside, create an image acting as a logo, followed by TextInput fields for email and password.
+main.js
 
-A TouchableOpacity button handles login when pressed, and there's an option to navigate to the signup screen if the user doesn't have an account. The layout and styles are set to create a clean and user-friendly interface.
 
-Include the code below in login.js:
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-import React, { useState } from "react";
-import { View, SafeAreaView, Image, Alert, Text, TextInput, TouchableOpacity } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Stack, useRouter } from "expo-router";
-import { COLORS, icons, SHADOWS } from "../constants";
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const router = useRouter();
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-     <Stack.Screen
-        options={{
-          headerStyle: { backgroundColor: COLORS.lightWhite },
-          headerShadowVisible: false,
-          headerLeft: () => (
-<></>
-          ),
-          headerTitle: "",
-        }}
-      />
-      <View style={{ padding: 20 }}>
-        <View
-          style={{
-            padding: 20,
-            marginLeft: "auto",
-            marginRight: "auto",
-            backgroundColor: "#f0f0f0",
-            borderRadius: 50,
-            height: 90,
-            ...SHADOWS.medium,
-            shadowColor: COLORS.white,
-          }}
-        >
-          <Image
-            source={icons.menu}
-            style={{
-              width: 50,
-              height: 50,
-              marginBottom: 20,
-            }}
-          />
-        </View>
-        {/* Form Component */}
-        <View style={{ marginTop: 20 }}>
-          <View style={{ marginBottom: 20 }}>
-            <TextInput
-              style={{
-                borderWidth: 1,
-                borderColor: "#ccc",
-                padding: 10,
-                borderRadius: 5,
-                marginBottom: 10,
-              }}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="Email"
-            />
-            <TextInput
-              style={{
-                borderWidth: 1,
-                borderColor: "#ccc",
-                padding: 10,
-                borderRadius: 5,
-                marginBottom: 10,
-              }}
-              value={password}
-              secureTextEntry={true}
-              onChangeText={setPassword}
-              placeholder="Password"
-            />
-          </View>
-          <TouchableOpacity
-            style={{
-              backgroundColor: COLORS.primary,
-              padding: 15,
-              borderRadius: 5,
-              alignItems: "center",
-            }}
-            onPress={handleLogin}
-          >
-            <Text style={{ color: "#fff", fontWeight: "bold" }}>Login</Text>
-          </TouchableOpacity>
-        </View>
-        {/* Additional Options */}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            margin: 10,
-          }}
-        >
-          <Text style={{ marginRight: 5 }}>
-            Don't have an account?
-          </Text>
-          <TouchableOpacity onPress={() => router.push("/signup")}>
-            <Text style={{ color: "blue" }}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-};
-export default Login;
+index.html
 
-Copied!
 
-Wrap Toggled!
-Next, create an asynchronous function named handleLogin before the return statement. This function will validate the user's email and password inputs. Follow these instructions to create this functionality.
 
-If either field is empty, it displays a validation error alert. It then creates a userDetails object containing the email, password, and a sample token.
-The function retrieves stored user details from AsyncStorage and checks if they exist. If found, it parses the stored details and compares the input email and password with the stored values.
-If they match, the user is redirected to the /home route . If the credentials are incorrect or no details are found, appropriate error alerts are shown. The function also includes a try-catch block to handle any errors that may occur while accessing AsyncStorage.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-  const handleLogin = async () => {
-    if (!email || !password) {
-      Alert.alert("Validation Error", "Please fill in all fields.");
-      return;
-    }
-    const userDetails = { email, password, token: "sample-token" };
-    console.log('userDetails', userDetails);
-    try {
-      const detailsDatafromSignup = await AsyncStorage.getItem("userDetails");
-      if (detailsDatafromSignup) {
-        const parsedDetails = JSON.parse(detailsDatafromSignup);
-        if (userDetails.email === parsedDetails.email && userDetails.password === parsedDetails.password) {
-          router.push("/home");
-        } else {
-          Alert.alert("Error", "Incorrect email or password.");
-          alert("Error Incorrect email or password.");
-        }
-      } else {
-        Alert.alert("Error", "No user details found in AsyncStorage.");
-        alert("Error No user details found in AsyncStorage.");
-      }
-    } catch (error) {
-      console.error("Error accessing AsyncStorage", error);
-    }
-  };
+startup.js
+
+
+
+App.js
+
+
+1 point
+2.
+Question 2
+Which file defines styling constants for a React Native app?
+
+
+
+config.js
+
+
+
+styles.css
+
+
+
+layout.js
+
+
+
+theme.js
+
+
+1 point
+3.
+Question 3
+Which of the following helps to navigate between screens in an app?
+
+
+
+useContext
+
+
+
+useRouter
+
+
+
+useState
+
+
+
+useEffect
+
+
+1 point
+4.
+Question 4
+Which custom theme constants are imported to set up the color, font, and size styling?
+
+
+
+COLORS, TYPOGRAPHY, and SCALE
+
+
+
+THEMES, TEXT, and DIMENSIONS
+
+
+
+COLORS, FONT, and SIZES
+
+
+
+STYLE, FONTSTYLE, and PROPORTIONS
+
+
+1 point
+5.
+Question 5
+Which custom hook is imported to handle API data fetching?
+
+
+
+useFetch
+
+
+
+fetchDataHook
+
+
+
+handleDataFetch
+
+
+
+useAPIHandler
+
+
+1 point
+6.
+Question 6
+Which empty button can be extended later to add functionality like navigating to another screen?
+
+
+
+NavigationButton
+
+
+
+FlatButton
+
+
+
+PressableWidget
+
+
+
+TouchableOpacity
+
+
+1 point
+7.
+Question 7
+Which of the following is used to fetch query parameters?
+
+
+
+getQueryValues
+
+
+
+useGlobalSearchParams
+
+
+
+getQueryParams
+
+
+
+fetchQueryParams
+
+
+1 point
+8.
+Question 8
+Which array defines the names of the tabs available in the details page?
+
+
+
+Tabs
+
+
+
+pageTabsList
+
+
+
+detailTabsHandler
+
+
+
+tabNamesArray
+
+
+1 point
+9.
+Question 9
+Which asynchronous function allows users to share the meditation details via the device's sharing options?
+
+
+
+shareData
+
+
+
+onShare
+
+
+
+shareFunctionHandler
+
+
+
+sendDetailsAsync
+
+
+1 point
+10.
+Question 10
+Which of the following is a component used to render a list efficiently?
+
+
+
+ListDetail
+
+
+
+FlatList
+
+
+
+ScrollableView
+
+
+
+ListRenderer
+
+\
