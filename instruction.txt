@@ -1,219 +1,218 @@
 1.
 Question 1
-Which of the following serves as the entry point of the application?
+What will happen if AsyncStorage.getItem throws an error in the loadFavorites function?
 
 
 
-main.js
+An error message will be logged in the console
 
 
 
-index.html
+The function remains as is
 
 
 
-startup.js
+The app will crash
 
 
 
-App.js
+The favorites array will have favorite exercises empty
 
 
 1 point
 2.
 Question 2
-Which file defines styling constants for a React Native app?
+Which of the following is the purpose of the ActivityIndicator in the component?
 
 
 
-config.js
+To show errors if favorites fail to load
 
 
 
-styles.css
+To display a spinner while loading favorite items
 
 
 
-layout.js
+To indicate network connectivity
 
 
 
-theme.js
+To refresh the list of items
 
 
 1 point
 3.
 Question 3
-Which of the following helps to navigate between screens in an app?
+Which of the following will be displayed when no favorite items are found?
 
 
 
-useContext
+A "No favorite items found" text
 
 
 
-useRouter
+Nothing is displayed
 
 
 
-useState
+A default list of items
 
 
 
-useEffect
+An error message
 
 
 1 point
 4.
 Question 4
-Which custom theme constants are imported to set up the color, font, and size styling?
+Identify the reason for using useFocusEffect instead of useEffect.
 
 
 
-COLORS, TYPOGRAPHY, and SCALE
+It ensures the screen reloads the data only once after the app is launched.
 
 
 
-THEMES, TEXT, and DIMENSIONS
+It ensures the loadFavorites function runs every time the screen is focused.
 
 
 
-COLORS, FONT, and SIZES
+It is more efficient for fetching API data.
 
 
 
-STYLE, FONTSTYLE, and PROPORTIONS
+It prevents unnecessary re-renders.
 
 
 1 point
 5.
 Question 5
-Which custom hook is imported to handle API data fetching?
+Which of the following best describes the purpose of using AsyncStorage in the Favourites component?
 
 
 
-useFetch
+To persist user data locally across app sessions
 
 
 
-fetchDataHook
+To manage app navigation state
 
 
 
-handleDataFetch
+To store temporary data for the session
 
 
 
-useAPIHandler
+To fetch data from an API
 
 
 1 point
 6.
 Question 6
-Which empty button can be extended later to add functionality like navigating to another screen?
+Which of the following is the primary purpose of the fetch function in JavaScript?
 
 
 
-NavigationButton
+To make asynchronous HTTP requests to retrieve data from a URL
 
 
 
-FlatButton
+To render UI components dynamically
 
 
 
-PressableWidget
+To define reusable styles in JavaScript
 
 
 
-TouchableOpacity
+To execute server-side operations.
 
 
 1 point
 7.
 Question 7
-Which of the following is used to fetch query parameters?
+What does the response.json() method do in the fetchQuote function?
 
 
 
-getQueryValues
+Sends JSON data to the API server.
 
 
 
-useGlobalSearchParams
+Converts the HTTP response into a JavaScript object for easier manipulation.
 
 
 
-getQueryParams
+Renders JSON content directly to the screen
 
 
 
-fetchQueryParams
+Fetches only JSON responses from the API
 
 
 1 point
 8.
 Question 8
-Which array defines the names of the tabs available in the details page?
+Which of the following best describes the purpose of the console.error('Error fetching quote:', response.status) in the code?
 
 
 
-Tabs
+To debug by logging an error message if the API response status indicates an issue.
 
 
 
-pageTabsList
+To prevent the application from crashing during an error
 
 
 
-detailTabsHandler
+To display a success message in case the API request succeeds.
 
 
 
-tabNamesArray
+To log the fetched quote to the console.
 
 
 1 point
 9.
 Question 9
-Which asynchronous function allows users to share the meditation details via the device's sharing options?
+Which of the following statements is true about response.status?
 
 
 
-shareData
+It is a method that sends data back to the server
 
 
 
-onShare
+It is used to fetch JSON content from the API.
 
 
 
-shareFunctionHandler
+It represents the content length of the response.
 
 
 
-sendDetailsAsync
+It is a property that contains the HTTP status code of the response.
 
 
 1 point
 10.
 Question 10
-Which of the following is a component used to render a list efficiently?
+If the API URL is incorrect, what would the DailyQuote component do?
 
 
 
-ListDetail
+Display a "No Internet Connection" message.
 
 
 
-FlatList
+Log an error message to the console.
 
 
 
-ScrollableView
+Crash the app immediately.
 
 
 
-ListRenderer
+Display a default quote.
 
-\
