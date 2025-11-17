@@ -1,297 +1,218 @@
-Task 6: Return JSX
-Within return statment perform given functionality:
+1.
+Question 1
+What is the purpose of the loadUserDetails function in the Settings component?
 
-Create SafeAreaView component which is used to ensure the content is rendered within the safe area of the device.
 
-Use ScreenHeaderBtn at the top of the screen to have a button or header component.
 
-Create ScrollView which is used to allow scrolling, making the content scrollable when needed.
+To retrieve user details stored locally using AsyncStorag
 
-Check userDetails state, and if it exists, the user's name is displayed in a greeting Hello {userName}. The user's name is parsed from the JSON stored in AsyncStorage.
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-return (
-  <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
-    <ScreenHeaderBtn />
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={{ flex: 1, padding: SIZES.medium }}>
-        <View style={{ width: "100%" }} testID="userDetails">
-          {userDetails && (
-            <Text
-              style={{
-                fontFamily: FONT.regular,
-                fontSize: SIZES.large,
-                color: COLORS.secondary,
-              }}
-            >
-              Hello {JSON.parse(userDetails).userName}!
-            </Text>
-          )}
-          <Text
-            style={{
-              fontFamily: FONT.bold,
-              fontSize: SIZES.xLarge,
-              color: COLORS.primary,
-              marginTop: 2,
-            }}
-          >
-            Would you like to change any settings?
-          </Text>
-        </View>
-        </View>
-</ScrollView>
-</SafeAreaView>
-);
 
-Copied!
+To display default user data on the screen
 
-Wrap Toggled!
-Map the settings state according to given steps:
 
-Mapping settings: The settings array is mapped, and each setting renders a TouchableOpacity component with styling for its container.
 
-TouchableOpacity: This component is used to create a pressable button for each setting. It contains an icon (using Image) and the title (using Text).
+To log out the user
 
-When a setting is pressed, it navigates to the corresponding route using router.push.
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-{settings.map((setting) => (
-  <TouchableOpacity
-    key={setting.id}
-    style={{
-      flex: 1,
-      justifyContent: "space-between",
-      alignItems: "center",
-      flexDirection: "row",
-      padding: SIZES.medium,
-      borderRadius: SIZES.small,
-      backgroundColor: "#FFF",
-      ...SHADOWS.medium,
-      shadowColor: COLORS.white,
-      marginVertical: SIZES.small,
-    }}
-    onPress={() => router.push(`settings/${setting.route}`)}
-  >
-    <View
-      style={{
-        width: 50,
-        height: 50,
-        backgroundColor: COLORS.white,
-        borderRadius: SIZES.medium,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Image
-        source={{ uri: setting.icon }}
-        resizeMode="cover"
-        style={{ width: "70%", height: "70%" }}
-      />
-    </View>
-    <View style={{ flex: 1, marginHorizontal: SIZES.medium }}>
-      <Text
-        style={{
-          fontSize: SIZES.medium,
-          fontFamily: "DMBold",
-          color: COLORS.primary,
-        }}
-        numberOfLines={1}
-      >
-        {setting?.title}
-      </Text>
-    </View>
-  </TouchableOpacity>
-))}
 
-Copied!
+To fetch user settings from an API
 
-Wrap Toggled!
-Note: Include above code after View component with testID="userDetails"
 
-Create button for logout after performing above step:
+1 point
+2.
+Question 2
+Which of the following is the functionality of the TouchableOpacity component in the settings menu?
 
-This is the logout button, styled similarly to the settings buttons but with a unique background color (#FFC0CB).
 
-When pressed, it calls the handleLogout function to log the user out and navigate them to the login screen.
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-<TouchableOpacity
-  style={{
-    flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
-    padding: SIZES.medium,
-    borderRadius: SIZES.small,
-    backgroundColor: "#FFC0CB",
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
-    marginVertical: SIZES.small,
-  }}
-  onPress={handleLogout}
->
-  <View
-    style={{
-      width: 50,
-      height: 50,
-      backgroundColor: COLORS.white,
-      borderRadius: SIZES.medium,
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <Image
-      source={icons.left}
-      resizeMode="cover"
-      style={{
-        width: "70%",
-        height: "70%",
-      }}
-    />
-  </View>
-  <View
-    style={{
-      flex: 1,
-      marginHorizontal: SIZES.medium,
-    }}
-  >
-    <Text
-      style={{
-        fontSize: SIZES.medium,
-        fontFamily: "DMBold",
-        color: COLORS.primary,
-      }}
-      numberOfLines={1}
-    >
-      Logout
-    </Text>
-  </View>
-</TouchableOpacity>
+To add animations to the settings menu
+
+
+
+To display images and icons in the settings list
+
+
+
+To display a list of static settings options
+
+
+
+To provide clickable buttons that navigate to specific routes
+
+
+1 point
+3.
+Question 3
+Why is the userDetails state parsed using JSON.parse before displaying the username?
+
+
+
+To ensure that the username is displayed in uppercase
+
+
+
+To convert the user details into a string format
+
+
+
+To check if the username exists in the object
+
+
+
+To convert the stored string back into an object
+
+
+1 point
+4.
+Question 4
+What would happen when the handleLogout function is called?
+
+
+
+The user details are updated with new values
+
+
+
+The userDetails data is cleared from AsyncStorage, and the user is redirected to the login screen
+
+
+
+The user is redirected to the "Favourites" screen
+
+
+
+A logout confirmation modal appears
+
+
+1 point
+5.
+Question 5
+What will happen if settings.map is executed with an empty settings array?
+
+
+
+An error will be thrown
+
+
+
+A message will be displayed saying, "No settings available."
+
+
+
+A default settings option will be displayed
+
+
+
+Nothing will render on the screen for the settings list
+
+
+1 point
+6.
+Question 6
+What is the purpose of the checkLoginState function in the Layout component?
+
+
+
+To verify if the user is logged in by checking the AsyncStorage
+
+
+
+To handle navigation between screens
+
+
+
+To toggle between dark and light themes
+
+
+
+To load the application fonts
+
+
+1 point
+7.
+Question 7
+Which of the following is the function of toggleTheme in the ThemeChange component?
+
+
+
+Clears user details from AsyncStorage
+
+
+
+Switches between different fonts
+
+
+
+Changes the navigation stack
+
+
+
+Toggles the application theme between light and dark modes
+
+
+1 point
+8.
+Question 8
+Why is the useTheme hook used in the ThemeChange component?
+
+
+
+To store the theme setting in AsyncStorage
+
+
+
+To create a new theme context dynamically
+
+
+
+To initialize the theme for the app
+
+
+
+To access and modify the current theme context
+
+
+1 point
+9.
+Question 9
+Which of the following statements determines the initial route in the Layout component?
+
+
+
+The useFonts hook status
+
+
+
+The value of the unstable_settings object
+
+
+
+Whether the user is logged in or not
+
+
+
+The selected theme from ThemeProvider
+
+
+1 point
+10.
+Question 10
+In the ThemeChange component, what will happen if the toggleTheme function is called when the current theme is "light"?
+
+
+
+The theme will change to "dark," and the UI will update accordingly
+
+
+
+The theme will remain unchanged
+
+
+
+The theme state will be reset to "light"
+
+
+
+The app will crash
+
