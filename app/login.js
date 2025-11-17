@@ -1,129 +1,3 @@
-Task 4: Create login functionality
-Next, create one more component named login.js inside the app folder.
-
-Within the login.js component, create logic that displays a form for user login:
-
-Use useState hooks to manage email and password input values and provides a SafeAreaView with a header styled to blend with a light background.
-
-Inside, create an image acting as a logo, followed by TextInput fields for email and password.
-
-A TouchableOpacity button handles login when pressed, and there's an option to navigate to the signup screen if the user doesn't have an account. The layout and styles are set to create a clean and user-friendly interface.
-
-Include the code below in login.js:
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
 import React, { useState } from "react";
 import { View, SafeAreaView, Image, Alert, Text, TextInput, TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -133,6 +7,33 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      Alert.alert("Validation Error", "Please fill in all fields.");
+      return;
+    }
+    const userDetails = { email, password, token: "sample-token" };
+    console.log('userDetails', userDetails);
+    try {
+      const detailsDatafromSignup = await AsyncStorage.getItem("userDetails");
+      if (detailsDatafromSignup) {
+        const parsedDetails = JSON.parse(detailsDatafromSignup);
+        if (userDetails.email === parsedDetails.email && userDetails.password === parsedDetails.password) {
+          router.push("/home");
+        } else {
+          Alert.alert("Error", "Incorrect email or password.");
+          alert("Error Incorrect email or password.");
+        }
+      } else {
+        Alert.alert("Error", "No user details found in AsyncStorage.");
+        alert("Error No user details found in AsyncStorage.");
+      }
+    } catch (error) {
+      console.error("Error accessing AsyncStorage", error);
+    }
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
      <Stack.Screen
@@ -229,65 +130,3 @@ const Login = () => {
   );
 };
 export default Login;
-
-Copied!
-
-Wrap Toggled!
-Next, create an asynchronous function named handleLogin before the return statement. This function will validate the user's email and password inputs. Follow these instructions to create this functionality.
-
-If either field is empty, it displays a validation error alert. It then creates a userDetails object containing the email, password, and a sample token.
-The function retrieves stored user details from AsyncStorage and checks if they exist. If found, it parses the stored details and compares the input email and password with the stored values.
-If they match, the user is redirected to the /home route . If the credentials are incorrect or no details are found, appropriate error alerts are shown. The function also includes a try-catch block to handle any errors that may occur while accessing AsyncStorage.
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-  const handleLogin = async () => {
-    if (!email || !password) {
-      Alert.alert("Validation Error", "Please fill in all fields.");
-      return;
-    }
-    const userDetails = { email, password, token: "sample-token" };
-    console.log('userDetails', userDetails);
-    try {
-      const detailsDatafromSignup = await AsyncStorage.getItem("userDetails");
-      if (detailsDatafromSignup) {
-        const parsedDetails = JSON.parse(detailsDatafromSignup);
-        if (userDetails.email === parsedDetails.email && userDetails.password === parsedDetails.password) {
-          router.push("/home");
-        } else {
-          Alert.alert("Error", "Incorrect email or password.");
-          alert("Error Incorrect email or password.");
-        }
-      } else {
-        Alert.alert("Error", "No user details found in AsyncStorage.");
-        alert("Error No user details found in AsyncStorage.");
-      }
-    } catch (error) {
-      console.error("Error accessing AsyncStorage", error);
-    }
-  };
