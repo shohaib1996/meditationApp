@@ -1,218 +1,219 @@
 1.
 Question 1
-What is the purpose of the loadUserDetails function in the Settings component?
+Which of the following best describes the purpose of the handleAddReminder function in the notification feature?
 
 
 
-To retrieve user details stored locally using AsyncStorag
+It sends a test notification to verify the notification system works.
 
 
 
-To display default user data on the screen
+It stores the reminder in a database for permanent storage.
 
 
 
-To log out the user
+It triggers the notification immediately without any checks.
 
 
 
-To fetch user settings from an API
+It adds a new reminder after performing necessary checks and updates the reminders list.
 
 
 1 point
 2.
 Question 2
-Which of the following is the functionality of the TouchableOpacity component in the settings menu?
+Which of the following is the primary purpose of the scheduleNotification function in the notification feature?
 
 
 
-To add animations to the settings menu
+It adds a new reminder to the reminder list.
 
 
 
-To display images and icons in the settings list
+It schedules a notification based on the reminder’s trigger date and sends a reminder notification.
 
 
 
-To display a list of static settings options
+It checks if notifications are enabled in the user's device settings.
 
 
 
-To provide clickable buttons that navigate to specific routes
+It stores the reminder data in a cloud database for future use.
 
 
 1 point
 3.
 Question 3
-Why is the userDetails state parsed using JSON.parse before displaying the username?
+Which of the following is the correct way to ensure proper versioning and unique identification for your Android app when preparing for submission on the Google Play Store?
 
 
 
-To ensure that the username is displayed in uppercase
+Set the android.package field to any name and set versionCode to 0 for every release.
 
 
 
-To convert the user details into a string format
+Set the android.package field to a unique identifier and increment the versionCode with each release.
 
 
 
-To check if the username exists in the object
+Use a random string for the android.package field and reset versionCode with each release.
 
 
 
-To convert the stored string back into an object
+Set the android.package field to the default package name provided by Expo, and leave versionCode unchanged for all releases.
 
 
 1 point
 4.
 Question 4
-What would happen when the handleLogout function is called?
+Which of the following is the primary function of the deleteReminder function in the notification feature?
 
 
 
-The user details are updated with new values
+It checks if a reminder’s trigger time is valid before deleting it.
 
 
 
-The userDetails data is cleared from AsyncStorage, and the user is redirected to the login screen
+It schedules a notification for a new reminder based on the trigger date.
 
 
 
-The user is redirected to the "Favourites" screen
+It removes a reminder from the list by its ID, updates AsyncStorage, and reflects the changes in the UI.
 
 
 
-A logout confirmation modal appears
+It adds a new reminder to the list and saves it in AsyncStorage.
 
 
 1 point
 5.
 Question 5
-What will happen if settings.map is executed with an empty settings array?
+Which of the following steps helps optimize the performance of a React Native Expo app for production?
 
 
 
-An error will be thrown
+Enabling development mode to allow for quick debugging during deployment
 
 
 
-A message will be displayed saying, "No settings available."
+Disabling Hermes to ensure compatibility with all devices
 
 
 
-A default settings option will be displayed
+Using expo-optimize to compress and reduce the size of assets
 
 
 
-Nothing will render on the screen for the settings list
+Keeping all unused dependencies in the app to ensure future flexibility
 
 
 1 point
 6.
 Question 6
-What is the purpose of the checkLoginState function in the Layout component?
+Which of the following serves as the primary visual identifier for an app, displayed both on user’ devices and within app stores, and plays a key role in branding?
 
 
 
-To verify if the user is logged in by checking the AsyncStorage
+App icon
 
 
 
-To handle navigation between screens
+Promotional video
 
 
 
-To toggle between dark and light themes
+Screenshots
 
 
 
-To load the application fonts
+Splash screen
 
 
 1 point
 7.
 Question 7
-Which of the following is the function of toggleTheme in the ThemeChange component?
+Which of the following refers to the tools used to store notification settings and preferences persistently?
 
 
 
-Clears user details from AsyncStorage
+Local notifications
 
 
 
-Switches between different fonts
+AsyncStorage/SharedPreferences
 
 
 
-Changes the navigation stack
+Permissions
 
 
 
-Toggles the application theme between light and dark modes
+State management
 
 
 1 point
 8.
 Question 8
-Why is the useTheme hook used in the ThemeChange component?
+Which of the following helps users discover an app during searches in the app store?
 
 
 
-To store the theme setting in AsyncStorage
+App description
 
 
 
-To create a new theme context dynamically
+Marketplace listing
 
 
 
-To initialize the theme for the app
+Keywords
 
 
 
-To access and modify the current theme context
+App icon
 
 
 1 point
 9.
 Question 9
-Which of the following statements determines the initial route in the Layout component?
+Which of the following is the first step when drafting a marketplace listing for an app?
 
 
 
-The useFonts hook status
+Prepare media assets
 
 
 
-The value of the unstable_settings object
+Organize Files in README.md
 
 
 
-Whether the user is logged in or not
+Submit the URL of the repository containing your README.md file
 
 
 
-The selected theme from ThemeProvider
+Gather Required Information
 
 
 1 point
 10.
 Question 10
-In the ThemeChange component, what will happen if the toggleTheme function is called when the current theme is "light"?
+Which of the following is the correct sequence of steps to implement alerts in React Native for notifications?
 
 
 
-The theme will change to "dark," and the UI will update accordingly
+Install required libraries, request permissions, schedule notifications, test notifications, and build UI for notification settings
 
 
 
-The theme will remain unchanged
+Install required libraries, request permissions, build UI for notification settings, schedule notifications, and test notifications
 
 
 
-The theme state will be reset to "light"
+Request permissions, install required libraries, build UI for notification settings, schedule notifications, and test notifications
 
 
 
-The app will crash
+Install required libraries, build UI for notification settings, schedule notifications, request permissions, and test notifications
+
 
